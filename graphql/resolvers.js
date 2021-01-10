@@ -127,7 +127,7 @@ module.exports = {
     }
     const perPage = limit || 10;
     const currentCompany = await Company.findById(id);
-    const totalCompanies = await Company.find().count();
+    const totalCompanies = await Company.find({ industry: currentCompany.industry, no_of_employees: currentCompany.no_of_employees }).count();
     const companies = await Company.find({ industry: currentCompany.industry, no_of_employees: currentCompany.no_of_employees })
       .sort({ createdAt: -1 })
       .skip((page - 1) * perPage)
