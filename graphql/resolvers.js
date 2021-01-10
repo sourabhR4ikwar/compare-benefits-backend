@@ -141,15 +141,16 @@ module.exports = {
           updatedAt: comp.updatedAt.toISOString()
         };
       }),
-      totalCompanies: totalCompanies
+      totalCompanies: totalCompanies,
+      page: page
     };
   },
 
-  companies: async function({ page }, req) {
+  companies: async function({ page, limit }, req) {
     if (!page) {
       page = 1;
     }
-    const perPage = 10;
+    const perPage = limit || 12;
     const totalCompanies = await Company.find().countDocuments();
     const companies = await Company.find()
       .sort({ createdAt: -1 })
@@ -164,7 +165,8 @@ module.exports = {
           updatedAt: comp.updatedAt.toISOString()
         };
       }),
-      totalCompanies: totalCompanies
+      totalCompanies: totalCompanies,
+      page: page
     };
   },
 

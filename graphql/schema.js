@@ -41,6 +41,7 @@ module.exports = buildSchema(`
     type CompanyData {
         companies: [Company!]!
         totalCompanies: Int!
+        page: Int!
     }
 
     input UserInputData {
@@ -73,7 +74,7 @@ module.exports = buildSchema(`
     }
 
     type RootQuery {
-        companies(page: Int): CompanyData!
+        companies(page: Int, limit: Int): CompanyData!
         competitors(id: ID!, page: Int!, limit: Int): CompanyData!
         company(id: ID!): Company!
         user: User!
