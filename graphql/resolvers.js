@@ -46,7 +46,7 @@ module.exports = {
     return { ...user._doc, _id: user._id.toString() };
   },
   
-  createCompany: async function({ companyInput, reqId }, req) {
+  createCompany: async function({ companyInput, userId }, req) {
     const errors = [];
     if (validator.isEmpty(companyInput.name))
     {

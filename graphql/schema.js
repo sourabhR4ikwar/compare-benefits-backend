@@ -82,7 +82,7 @@ module.exports = buildSchema(`
 
     type RootMutation {
         createUser(userInput: UserInputData): User!
-        createCompany(companyInput: CompanyInputData): Company!
+        createCompany(companyInput: CompanyInputData, userId: ID!): Company!
         updateCompany(id: ID!, companyInput: CompanyInputData): Company!
     }
 
